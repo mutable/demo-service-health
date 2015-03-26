@@ -1,0 +1,12 @@
+{
+  "api": {
+    "mailchimp": {
+      "token": "7ef3f93b7220ebf8e190a679b5a446f7-us7",
+      "lists": {
+        "demo": "a230c0471f",
+        "newsletter": "eb3f3375b1",
+        "local": "d0cb040d71"
+      }
+    }
+  }
+}
