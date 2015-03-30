@@ -1,19 +1,19 @@
 var path = require('path')
   , fs  = require('fs')
   , marked = require('marked')
+  , cache = ""
+  , send = function(dir){
+    if(cache) return cache
+    cache = build(process.env.SERVICE_NAME || "Missing Service Name" +" \n===")
 
-var cache = "";
-var send =function(dir){
-  if(cache) return cache
-  cache = build(process.env.SERVICE_NAME || "Missing Service Name" +" \n===")
+    fs.readFile(path.join(__dirname,'../readme.md'), function (err, data) {
+      if (err) return console.error("Missing Service Contract (README.md)")
+       cache = build(data.toString())
+    })
 
-  fs.readFile(path.join(__dirname,'../readme.md'), function (err, data) {
-    if (err) return console.error("Missing Service Contract (README.md)")
-     cache = build(data.toString())
-  })
-
-  return cache
-}
+    return cache
+  }
+  
 function build(markdown){
 
     var html = "<html><head>"
@@ -25,4 +25,7 @@ function build(markdown){
 
     return html
 }
+
+send()
+
 module.exports = send

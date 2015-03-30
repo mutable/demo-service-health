@@ -25,7 +25,7 @@
     "health",
     "microservice"
   ],
+  "watch":"api/**/*",
   "author": "lsqio",
-  "port": 3005,
   "license": "MIT"
 }
