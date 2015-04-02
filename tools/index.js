@@ -4,7 +4,7 @@ var tools = {
 	, getReportingInfo : require('./reporting')
 	, healthCheck : require('./healthCheck')
 	, test : require('./test')	
-	, homepage : require('./homepage')	
+	, homePage : require('./homePage')	
 }
 
 module.exports = tools
