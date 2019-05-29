@@ -41,7 +41,7 @@
 							servicesList[service.name].splice(1,1)
 						}
 
-						servicesList[service.name].push(service.result == 0 ? -5 : service.result)						
+						servicesList[service.name].push(service.result == 0 ? 0 : service.result)
 					})
 
 					updateChart()
