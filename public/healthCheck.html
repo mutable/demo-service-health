@@ -4,63 +4,54 @@
 	</head>
 	<body>
 		<div id="chart"></div>
-		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="http://d3js.org/d3.v5.min.js" charset="utf-8"></script>
 		<script src="https://rawgit.com/masayuki0812/c3/master/c3.js"></script>
 		<script>
 			var servicesList = {}
 
 			var chart = c3.generate({
-			    data: {
-			        columns: [
-			        ]
-			    }
+				bindto: '#chart',
+			  data: { columns: [] }
 			})
 
 			getHealth()
-
 			setInterval(getHealth,1000)
 
 			function getHealth(){
-
 				var xmlhttp = new XMLHttpRequest()
 				var url = "/api/v1/healthChecks"
 
 				xmlhttp.onreadystatechange = function() {
-				    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				        done(JSON.parse(xmlhttp.responseText))
-				    }
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						done(JSON.parse(xmlhttp.responseText))
+					}
 				}
-				xmlhttp.open("GET", url, true)
-				xmlhttp.send()
+
+				xmlhttp.open("GET", url, true);
+				xmlhttp.send();
 
 				function done(services) {
-				    var out = "";
-				    var i;
-				    //for(i = 0; i < services.length; i++) {
-				    //     out += '<a href="' + services[i].url + '">' + 
-				    //     services[i].display + '</a><br>';
-				    // }
+					var out = "";
+					var i;
 
-				    services.forEach(function(service){
-				    	if(!servicesList[service.name]){
-				    		servicesList[service.name] = [service.name]
-				    	}else if(servicesList[service.name].length > 60){
-				    	 	servicesList[service.name].splice(1,1)
-				    	}
+					services.forEach(function(service) {
+						if(!servicesList[service.name]){
+							servicesList[service.name] = [service.name]
+						} else if(servicesList[service.name].length > 60){
+							servicesList[service.name].splice(1,1)
+						}
 
-				    	servicesList[service.name].push(service.result == 0 ? -5 : service.result)
-				    })
-				    updateChart()
+						servicesList[service.name].push(service.result == 0 ? -5 : service.result)						
+					})
+
+					updateChart()
 				}
 			}
 			function updateChart(){
-
 				chart.load({
-		        	columns: Object.keys(servicesList).map(function(k){return servicesList[k]})
-		    	})
-
+					columns: Object.keys(servicesList).map(function(k){return servicesList[k]})
+				})
 			}
-
 		</script>
 	</body>
 </html>

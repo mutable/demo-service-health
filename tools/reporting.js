@@ -1,18 +1,18 @@
-var onFinished = require('on-finished')
+const onFinished = require('on-finished');
 
-var getDiffTook = function(time){
-  var diff = process.hrtime(time)
-  var ms = diff[0] * 1e3 + diff[1] * 1e-6
-  return ms.toFixed(3)
+const getDiffTook = (time) => {
+  const diff = process.hrtime(time);
+  const ms = diff[0] * 1e3 + diff[1] * 1e-6;
+  return ms.toFixed(3);
 }
 
 
-var getReportingInfo = function(callback){
-  return function(req,res,next){
+const getReportingInfo = (callback) => {
+  return (req,res,next) => {
     req._startedAt = process.hrtime()
     req._startedTime = new Date
     onFinished(res, function(){
-      var request = {}
+      const request = {}
       request.status = res.statusCode
       request.date = req._startedTime
       request.took = getDiffTook(req._startedAt) 
@@ -29,4 +29,5 @@ var getReportingInfo = function(callback){
     next()
   }
 }
-module.exports = getReportingInfo
+
+module.exports = getReportingInfo;

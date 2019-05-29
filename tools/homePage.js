@@ -1,7 +1,7 @@
-  var sendMarkdown =  require('./sendMarkdown')
-  
-  var homePage = function(req, res){
-    res.redirect("/healthCheck.html")
-  }
+const sendMarkdown = require('./sendMarkdown');
 
-  module.exports = homePage
+const homePage = (req, res) => {
+  res.redirect("/healthCheck.html");
+}
+
+module.exports = homePage;
