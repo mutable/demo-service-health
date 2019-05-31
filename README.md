@@ -1,6 +1,8 @@
 Health Service ()
 ===
 
+This is a boilerplate service meant to display the Health status of the services in your current stack.
+
 - Apis
 - Setup
 - Config
