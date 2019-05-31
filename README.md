@@ -13,7 +13,7 @@ The result should look like this:
 
 ![Screenshot from 2019-05-31 13-52-17](https://user-images.githubusercontent.com/20372024/58697966-634abf00-83ab-11e9-9c94-8a02a5c025d5.png)
 
-Statuses are constatnly updating.
+Statuses are constantly updating.
 
 Please note that all the services must be running for the Health Check service to display their status.
 
