@@ -1,8 +1,14 @@
 Demo Health Check microservice
 ===
 
-This is a boilerplate service meant to display the Health status of the services in your current stack.
+This is a service meant to display the Health status of the services in your current stack.
 
+## Overview
+
+This service is built using `Express`.
+Health status visaulization is done via `D3.js` and `C3js`
+
+---
 Clone this repository in the stack, navigate into it and run the `npm install` command.
 
 In order to see the Health Check results you must navigate to the service's webpage by clicking the port number under "View Site" column of the stack list 
@@ -23,3 +29,9 @@ APIs
 ---
 
 ### GET: /api/v1/healthChecks
+
+## Exteral Links
+
+- [**Express**](https://expressjs.com/)
+- [**C3**](https://c3js.org/)
+- [**D3**](https://d3js.org/)
