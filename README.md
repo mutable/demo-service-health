@@ -1,4 +1,4 @@
-Health Check microservice
+Demo Health Check microservice
 ===
 
 This is a boilerplate service meant to display the Health status of the services in your current stack.
@@ -15,6 +15,7 @@ The result should look like this:
 
 Statuses are constantly updating.
 
+## Notes
 Please note that all the services must be running for the Health Check service to display their status.
 
 
