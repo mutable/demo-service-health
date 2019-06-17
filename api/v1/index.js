@@ -1,7 +1,5 @@
 const express = require('express');
 const api = express.Router();
-const fs = require('fs');
-const Path = require('path');
 const request = require('request-promise');
 const Meta  = require('@mutable/meta');
 
