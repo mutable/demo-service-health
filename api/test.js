@@ -1,7 +1,10 @@
-const test = (req, res) => {
+
+const API = {}
+
+module.exports = API;
+
+API.count = (req, res) => {
   let i = 0
   while (i < 1e9) i++
   res.send("I counted to " + i)
 }
-
-module.exports = test;

@@ -28,7 +28,8 @@ Please note that all the services must be running for the Health Check service t
 APIs
 ---
 
-### GET: /api/v1/healthChecks
+### GET: /api/healthChecks
+### GET: /api/healthChecks/services
 
 ## Exteral Links
 
