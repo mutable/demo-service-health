@@ -29,7 +29,6 @@ API.healthCheck = (req, res) => {
 API.getServices = (req, res) => {
   Meta.services()
   .then((_services) => {
-    console.log(_services)
-    res.send(_services)
+    res.send(_services);
   })
 }
