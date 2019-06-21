@@ -3,10 +3,10 @@
 * Redirect to Services health check page
 **/
 
-const API = {};
+const HomeApi = {};
 
-module.exports = API;
+module.exports = HomeApi;
 
-API.homePage = (req, res) => {
+HomeApi.homePage = (req, res) => {
   res.redirect("/healthCheck.html");
 }

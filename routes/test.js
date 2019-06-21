@@ -1,8 +1,8 @@
 const { Router } = require('express');
-const API_TEST = require('../api/test');
+const ApiTest = require('../api/test');
 
 const routes = Router();
 
 module.exports = routes;
 
-routes.get('/', API_TEST.count);
+routes.get('/', ApiTest.count);

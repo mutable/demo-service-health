@@ -5,6 +5,12 @@ This is a service meant to display the Health status of the services in your cur
 
 ## Overview
 
+
+This service uses our prepared boilerplate service available in Mutable's public repos.
+
+Health service: [Repo](https://github.com/mutable/boilerplate-node-micro-express)
+
+
 This service is built using `Express`.
 Health status visaulization is done via `D3.js` and `C3js`
 

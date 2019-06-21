@@ -5,10 +5,10 @@
 
 const tooBusy = require("toobusy-js");
 
-const API = {};
+const HealthApi = {};
 
-module.exports = API;
+module.exports = HealthApi;
 
-API.healthCheck = (req, res) => {
+HealthApi.healthCheck = (req, res) => {
   res.send(tooBusy.lag().toString());
 }

@@ -1,11 +1,11 @@
 const Meta = require('@mutable/meta');
 const request = require('request-promise');
 
-const API = {};
-module.exports = API;
+const ServicesApi = {};
+module.exports = ServicesApi;
 
 
-API.healthCheck = (req, res) => {
+ServicesApi.healthCheck = (req, res) => {
   Meta.services()
   .then((services) => {
     return services.map((serviceName) => {
@@ -26,7 +26,7 @@ API.healthCheck = (req, res) => {
   })
 }
 
-API.getServices = (req, res) => {
+ServicesApi.getServices = (req, res) => {
   Meta.services()
   .then((_services) => {
     res.send(_services);
