@@ -1,29 +1,27 @@
 const express = require('express');
 const http = require('http');
-const logger = require('morgan');
+const path = require('path');
+const lessMiddleware = require('less-middleware');
 const bodyParser = require('body-parser');
-const debug = require('debug');
 const methodOverride = require('method-override');
+const errorHandler = require('errorhandler');
 
-const tools = require('./tools');
+const initializeRoutes = require('./routes/index.js');
 
-const log = debug('app:log');
-const error = debug('app:error');
 const app = express();
 
+app.set('port', process.env.PORT || 3000),
+app.set('views', path.join(__dirname, '/views'));
+app.set('view engine', 'pug');
 
+app.use(lessMiddleware(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
+app.use(methodOverride());
+app.use(errorHandler());
 
-app
-.set('port', process.env.PORT || 3000)  
-.use(bodyParser.json())
-.use(bodyParser.urlencoded({ extended: true }))
-.use(methodOverride('_method'))
-.use(tools.getReportingInfo(tools.report))
-.use('/api/v1/',require('./api/v1'))
-.use(express.static('public'))
-.get('/',tools.homePage)
-.get('/test', tools.test)
-.get('/health',tools.healthCheck)
-.listen(app.get('port'),function(){
-  console.log("Express server listening on port " + app.get('port'))
+initializeRoutes(app);
+
+http.createServer(app).listen(app.get('port'), () => {
+  console.log(`Express server listening on port ${app.get('port')}`);
 });

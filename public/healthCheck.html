@@ -19,7 +19,7 @@
 
 			function getHealth(){
 				var xmlhttp = new XMLHttpRequest()
-				var url = "/api/v1/healthChecks"
+				var url = "/api/healthCheck"
 
 				xmlhttp.onreadystatechange = function() {
 					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {

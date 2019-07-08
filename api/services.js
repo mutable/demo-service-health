@@ -1,16 +1,11 @@
-const express = require('express');
-const api = express.Router();
+const Meta = require('@mutable/meta');
 const request = require('request-promise');
-const Meta  = require('@mutable/meta');
 
-let config;
+const ServicesApi = {};
+module.exports = ServicesApi;
 
-Meta.config()
-.then((c) => {
-  config = c  
-})
 
-api.get('/healthChecks', (req, res) => {
+ServicesApi.healthCheck = (req, res) => {
   Meta.services()
   .then((services) => {
     return services.map((serviceName) => {
@@ -29,11 +24,11 @@ api.get('/healthChecks', (req, res) => {
   .then((promisesArr) => {
     return Promise.all(promisesArr).then(results => res.send(results) )
   })
-})
+}
 
-api.get('/services', (req, res) => {  
+ServicesApi.getServices = (req, res) => {
   Meta.services()
-  .then(res.send)
-})
-
-module.exports = api;
+  .then((_services) => {
+    res.send(_services);
+  })
+}
